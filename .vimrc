@@ -31,8 +31,12 @@ hi TabLineSel term=bold cterm=bold gui=bold "active tabpage color
 hi TabLineSel ctermfg=6
 hi TabLineFill term=bold cterm=bold gui=bold "no lables tabpage color
 
+"Preview Show
+"set completeopt-=preview    "去除烦人的scratch预览窗口, 但是会影响YCM的体验, 所以这里不关闭
+
+
 "Plugin Config======================================"
-"taglist{
+"taglist{   
     "specified dirs:-R -a dir1  dir2 "
     "ctags  --c++-kinds=+p --fields=+iaS --extra=+q -a include/ test/ src/ -R -a include/ test/ src/"
     "ctrl+f12 in source root dir"
@@ -47,15 +51,18 @@ hi TabLineFill term=bold cterm=bold gui=bold "no lables tabpage color
 
 "YouCompleteMe{
 "let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-"let g:ycm_global_ycm_extra_conf='~/locket/.ycm_extra_conf.py'
+"let g:ycm_global_ycm_extra_conf='~/locket/.ycm_extra_conf.py' "放在工程根目录下，可以自动搜索,所以不需要指定
 let g:ycm_confirm_extra_conf = 0               "Turn off confirm
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 "nnoremap <leader>jl :YcmCompleter GoToDeclaration<CR>
 "nnoremap <leader>jk :YcmCompleter GoToDefinition<CR>
-let g:ycm_error_symbol = '>>'
-let g:ycm_warning_symbol = '>*'
-let g:ycm_enable_diagnostic_highlighting = 0
-let g:ycm_enable_diagnostic_signs = 0
+let g:ycm_error_symbol = '>e'
+let g:ycm_warning_symbol = '>w'
+let g:ycm_enable_diagnostic_signs = 1           "语法错误提示
+let g:ycm_enable_diagnostic_highlighting = 1    "语法错误高亮
+let g:ycm_key_invoke_completion = '<C-a>'       "Ycm不会补全printf这类全局函数，需要通过这个命令手动调用补全
+let g:ycm_add_preview_to_completeopt = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1 "在完成输入，退出insert模式后, 烦人的scratch窗口会自动关闭
 "}
 
 "Ag{
