@@ -34,6 +34,15 @@ hi TabLineFill term=bold cterm=bold gui=bold "no lables tabpage color
 "Preview Show
 "set completeopt-=preview    "去除烦人的scratch预览窗口, 但是会影响YCM的体验, 所以这里不关闭
 
+"set path   
+"每个工程的根目录，需要提前准备好setpath.vim的内容, 要在根目录打开文件
+"setpath.vim内容举例:
+"set path+=crypto/**5
+"set path+=include/openssl/**
+"set path+=ssl/**5
+if filereadable("setpath.vim")
+    source setpath.vim
+endif 
 
 "Plugin Config======================================"
 "taglist{   
