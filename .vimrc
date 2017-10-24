@@ -24,9 +24,9 @@ set backspace=2 "resolve under insert mode in mac, can not delete forward
 
 "set tabpage
 set showtabline=1
-hi TabLine term=bold cterm=bold gui=bold "not active tabpage color, remove under line 
-hi TabLine ctermbg=0
-hi TabLine ctermfg=0
+"hi TabLine term=bold cterm=bold gui=bold "not active tabpage color, remove under line 
+hi TabLine ctermbg=1
+hi TabLine ctermfg=255
 hi TabLineSel term=bold cterm=bold gui=bold "active tabpage color
 hi TabLineSel ctermfg=6
 hi TabLineFill term=bold cterm=bold gui=bold "no lables tabpage color
@@ -35,19 +35,20 @@ hi TabLineFill term=bold cterm=bold gui=bold "no lables tabpage color
 "set completeopt-=preview    "去除烦人的scratch预览窗口, 但是会影响YCM的体验, 所以这里不关闭
 
 "set path   
-"每个工程的根目录，需要提前准备好setpath.vim的内容, 要在根目录打开文件
-"setpath.vim内容举例:
+"每个工程的根目录，需要提前准备好.vimprj的内容, 要在根目录打开文件
+".vimrprj内容举例:
 "set path+=crypto/**5
 "set path+=include/openssl/**
 "set path+=ssl/**5
-if filereadable("setpath.vim")
-    source setpath.vim
+if filereadable(".vimprj")
+    source .vimprj
 endif 
+
+set tags=./tags,../tags,./TAGS,tags,TAGS
 
 "Plugin Config======================================"
 "taglist{   
     "specified dirs:-R -a dir1  dir2 "
-    "ctags  --c++-kinds=+p --fields=+iaS --extra=+q -a include/ test/ src/ -R -a include/ test/ src/"
     "ctrl+f12 in source root dir"
     map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
     let Tlist_Show_One_File = 1            "只显示当前文件的taglist，默认是显示多个
@@ -96,11 +97,12 @@ Bundle 'taglist.vim'
 Bundle 'a.vim'
 Bundle 'ag.vim'
 Bundle 'ctrlsf.vim'
+Bundle 'xml.vim'
 
 " b) 指定Github中其他用户仓库的插件，使用“用户名/插件名称”的方式指定
 "Bundle 'tpope/vim-fugitive'
 Bundle 'Lokaltog/vim-easymotion'
-Bundle 'Valloric/YouCompleteMe'
+"Bundle 'Valloric/YouCompleteMe'
 "Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 "Bundle 'tpope/vim-rails.git'
 
