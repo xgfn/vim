@@ -30,6 +30,8 @@ hi TabLine ctermfg=255
 hi TabLineSel term=bold cterm=bold gui=bold "active tabpage color
 hi TabLineSel ctermfg=6
 hi TabLineFill term=bold cterm=bold gui=bold "no lables tabpage color
+"search hilight 
+hi Search term=standout ctermfg=0 ctermbg=3 guifg=Black guibg=Yellow 
 
 "Preview Show
 "set completeopt-=preview    "去除烦人的scratch预览窗口, 但是会影响YCM的体验, 所以这里不关闭
@@ -45,6 +47,7 @@ if filereadable(".vimprj")
 endif 
 
 set tags=./tags,../tags,./TAGS,tags,TAGS
+nnoremap <silent> <leader>cd :cd %:p:h<CR>
 
 "Plugin Config======================================"
 "taglist{   
